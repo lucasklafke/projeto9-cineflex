@@ -22,7 +22,7 @@ export default function Home(){
                 <span>Selecione o filme</span>
             </Link>
             <main>
-                {movies.map(e => <Movie id={e.id} url={e.posterURL}/>)}
+                {movies.map(e => <Movie key={e.id} id={e.id} url={e.posterURL}/>)}
             </main>
         </div>
     )
