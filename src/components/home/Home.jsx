@@ -5,16 +5,20 @@ import { useParams } from "react-router-dom";
 import axios from 'axios'
 import "./style.css"
 import Movie from "./Movie";
-export default function Home(){
+
+
+export default function Home(props){
     let movieId = useParams()
     const [movies,setMovie] = useState([])
+
+
     useEffect(() => {
         const promise = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies")
         promise.then((response) =>{
             setMovie(response.data)
         })
     },[])
-    //console.log(typeof(movies[0]))
+    console.log(movies)
     return (
         <div className="Home">
             <Header/>
@@ -22,7 +26,7 @@ export default function Home(){
                 <span>Selecione o filme</span>
             </Link>
             <main>
-                {movies.map(e => <Movie key={e.id} id={e.id} url={e.posterURL}/>)}
+                {movies.map(e => <Movie key={e.id} id={e.id} url={e.posterURL} title={e.title} setMovie={props.setMovie}/>)}
             </main>
         </div>
     )

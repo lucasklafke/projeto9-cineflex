@@ -18,6 +18,7 @@ export default function SeatsPage(){
             setSession(seats)
         })
     },[])
+    console.log(seats)
     return (
         <>
             <Header/>
@@ -26,7 +27,7 @@ export default function SeatsPage(){
                 <Seats>
                     {seats.map(e => {
                         return (
-                            <Button key={e.id} className={`${e.isAvailable}`} >{e.name}</Button>
+                            <Button  key={e.id} className={`${e.isAvailable ? "avaible" : "unavaible"}`} >{e.name}</Button>
                         )
                     })}
                 </Seats>
@@ -43,7 +44,10 @@ export default function SeatsPage(){
                     <Input>             
                         <label htmlFor="cpf">CPF do comprador:</label>
                         <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF..."></input>
-                    </Input>              
+                    </Input>   
+                    <Input>
+                        <button type="submit" value="Submit"> Reservar assento(s) </button>
+                    </Input>
                 </form>
             </Container>
         </>
@@ -61,6 +65,12 @@ const Container = styledComponents.div`
         justify-content: center;
         align-items: center;
     }
+    form{
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+    }
     `
 const Seats = styledComponents.div`
     display:flex;
@@ -68,7 +78,7 @@ const Seats = styledComponents.div`
 `
 const Button = styledComponents.button`
     background-color: #C3CFD9;
-    color:#0000000;
+    color:#000000;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -80,22 +90,23 @@ const Button = styledComponents.button`
     border-radius: 17px;
     border: 1px solid #7B8B99;
 
-    
-    .selected{
+
+    buttonselected{
         background-color:#8DD7CF;
         border: 1px solid #1AAE9E;
         border-radius: 17px;
     }
-    .avaible{
+    avaible{
         background-color:#C3CFD9;
         border: 1px solid #7B8B99;
         border-radius: 17px;
     }
-    .unavaible{
+    button .unavaible{
         background-color:#FBE192;
         border: 1px solid #F7C52B;
         border-radius: 17px;
     }
+    .
 `
 const Input = styledComponents.div`
     display: flex;
@@ -106,5 +117,13 @@ const Input = styledComponents.div`
         width:330px;
         height:50px;
         border: 1px solid #D4D4D4
+    }
+    button{
+        background-color:#E8833A;
+        width: 225px;
+        height: 42px;
+        border-radius: 3px;
+        border:none;
+        color:white;
     }
 `

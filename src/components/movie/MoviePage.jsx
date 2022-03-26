@@ -6,9 +6,8 @@ import "./style.css";
 import MovieSession from "./MovieSession";
 import styledComponents from "styled-components";
 
-export default function MoviePage(){
+export default function MoviePage(props){
     const {movieId} = useParams()
-    const [session,setSession] = useState([])
     const [days,setDays] = useState([])
     useEffect(()    => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieId}/showtimes`)
@@ -23,7 +22,7 @@ export default function MoviePage(){
             <Header />
             <span>Selecione o horário</span>
             <div className="sessions">
-                {days.map(e => <MovieSession  id={e.id} weekday={e.weekday} date={e.date} showtimes={e.showtimes}/>)}
+                {days.map(e => <MovieSession  id={e.id} weekday={e.weekday} date={e.date} showtimes={e.showtimes} setSession={props.setSession}/>)}
             </div>
         </Container>
     )
