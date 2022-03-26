@@ -8,7 +8,7 @@ export default function MovieSession(props){
             <Container>
                 {list.map(e =>{
                     return (
-                        <Link to={`/assentos/: ${movieId}`}>
+                        <Link to={`/assentos/${e.id}`}>
                             <button>{e.name}</button>
                         </Link>
                     )
