@@ -3,11 +3,12 @@ import { useState } from "react";
 import Home from "../home/Home"
 import MoviePage from "../movie/MoviePage";
 import SeatsPage from "../seatspage/SeatsPage";
+import SuccessPage from "../successPage/SuccessPage";
 import "./style.css";
 export default function App(){
     const [movie, setMovie] = useState(null)
     const [session,setSession] = useState(null)
-    const [tickets, setTickets] = useState(null)
+    const [tickets, setTickets] = useState([])
     const [owner,setOwner] = useState(null)
     const data = {
         movie: movie,
@@ -21,8 +22,8 @@ export default function App(){
             <Routes>
                 <Route path="/" element={<Home  setMovie={setMovie}/>}/>
                 <Route path="/sessoes/:movieId" element={<MoviePage setSession={setSession}/>} />
-                <Route path="/assentos/:sessionId" element={<SeatsPage setTickets={setTickets} setOwner={setOwner}/>}/>
-
+                <Route path="/assentos/:sessionId" element={<SeatsPage tickets={tickets} setTickets={setTickets} setOwner={setOwner}/>}/>
+                <Route path="/sucesso" element={<SuccessPage/>}/>
             </Routes>
         </BrowserRouter>
     )

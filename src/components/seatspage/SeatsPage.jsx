@@ -6,10 +6,12 @@ import Header from "../public_components/Header"
 
 import "../../assets/css/reset.css"
 
-export default function SeatsPage(){
+export default function SeatsPage(props){
     const [seats,setSeats] = useState([])
     const [Session,setSession] = useState([])
     const {sessionId} = useParams()
+    const [seatsList,setSeatsList] = useState([])
+    
     useEffect((e) => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${sessionId}/seats`)
         promise.then(response =>{
@@ -18,7 +20,6 @@ export default function SeatsPage(){
             setSession(seats)
         })
     },[])
-    console.log(seats)
     return (
         <>
             <Header/>
@@ -27,7 +28,10 @@ export default function SeatsPage(){
                 <Seats>
                     {seats.map(e => {
                         return (
-                            <Button  key={e.id} className={`${e.isAvailable ? "avaible" : "unavaible"}`} >{e.name}</Button>
+                            <Button  onClick={() =>{
+                                setSeatsList(seatsList.concat(e.name))
+                                console.log(seatsList)
+                            }} key={e.id} className={`${e.isAvailable ? "avaible" : "unavaible"}`} >{e.name}</Button>
                         )
                     })}
                 </Seats>
@@ -36,7 +40,10 @@ export default function SeatsPage(){
                     <div className="avaible"></div>
                     <div className="unavailable"></div>
                 </div>
-                <form action="">
+                <form onSubmit={(e) => {
+                    e.preventDefault()
+                    props.setTickets(seatsList)
+                    }}>
                     <Input>
                         <label htmlFor="name">Nome do comprador:</label>
                         <input type="text" id="name" name="name" placeholder="Digite seu nome..."></input>
@@ -127,3 +134,4 @@ const Input = styledComponents.div`
         color:white;
     }
 `
+
