@@ -7,6 +7,14 @@ export default function SuccessPage(props){
     const {tickets} = data
     const {owner} = data
     console.log(data)
+
+    function cleaner(){
+        props.setUrl("")
+        setTimeout(() => {
+            window.location.href = "/"
+        }, 1);
+    }
+
     return (
         <SuccessContainer>
             <Header/>
@@ -32,7 +40,7 @@ export default function SuccessPage(props){
                 </div>
             </Container>
             <Link to="/">
-                <button>Voltar para a Home</button>
+                <button onClick={cleaner}>Voltar para a Home</button>
             </Link>
         </SuccessContainer>
     )

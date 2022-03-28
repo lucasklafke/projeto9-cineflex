@@ -25,7 +25,7 @@ export default function App(){
                 <Route path="/" element={<Home setUrl={setUrl} setMovie={setMovie}/>}/>
                 <Route path="/sessoes/:movieId" element={<MoviePage setSession={setSession} data={data}/>} />
                 <Route path="/assentos/:sessionId" element={<SeatsPage data={data} tickets={tickets} setTickets={setTickets} setOwner={setOwner} owner={owner}/>}/>
-                <Route path="/sucesso" element={<SuccessPage data={data}/>}/>
+                <Route path="/sucesso" element={<SuccessPage data={data} setUrl={setUrl} setTickets={setTickets} setOwner={setOwner} setMovie={setMovie} setSession={setSession}   />}/>
             </Routes>
         </BrowserRouter>
     )
