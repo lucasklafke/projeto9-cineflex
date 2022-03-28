@@ -6,7 +6,6 @@ export default function Footer(props){
         weekday = props.session 
         date = props.session
     }
-    console.log(props.session)
     return (
         <FooterContainer>
             <div>

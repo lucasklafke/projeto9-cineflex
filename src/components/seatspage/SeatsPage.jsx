@@ -27,6 +27,7 @@ export default function SeatsPage(props){
         e.preventDefault()
         //console.log(ownerName)
         props.setOwner({ name: ownerName, cpf: ownerCpf })
+        props.setTickets(seatsList)
         const postObject = {
             ids: seatsId,
             name: `${ownerName}`,
@@ -46,9 +47,10 @@ export default function SeatsPage(props){
 
     function manageSeats(e){
         if(!(seatsList.includes(e.name))){
-            props.setTickets(seatsList)
             setSeatsList(seatsList.concat(e.name))
             setSeatsId(seatsId.concat(e.id))
+            // props.setTickets(seatsList)
+            console.log(seatsList)
         }else{
             setSeatsList(seatsList.filter(seat => seat !== e.name))
             setSeatsId(seatsId.filter(id => id !== e.id))

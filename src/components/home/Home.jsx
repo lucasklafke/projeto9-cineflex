@@ -17,8 +17,10 @@ export default function Home(props){
         promise.then((response) =>{
             setMovie(response.data)
         })
+        promise.catch((error) =>{
+            alert("Erro ao carregar os filmes")
+        })
     },[])
-    console.log(movies)
     return (
         <div className="Home">
             <Header/>

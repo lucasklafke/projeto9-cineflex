@@ -21,6 +21,9 @@ export default function MoviePage(props){
             const session = response.data
             setDays(session.days) 
         })
+        promise.catch((error) => {
+            alert("Erro ao carregar os dias")
+        })
     },[])
 
     return (

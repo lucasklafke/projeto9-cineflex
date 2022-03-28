@@ -18,7 +18,6 @@ export default function App(){
         tickets:tickets,
         owner:owner,
     }
-    console.log(data)
     return (
         <BrowserRouter>
             <Routes>
