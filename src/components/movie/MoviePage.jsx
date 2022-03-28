@@ -5,10 +5,16 @@ import axios from 'axios'
 import "./style.css";
 import MovieSession from "./MovieSession";
 import styledComponents from "styled-components";
+import Footer from "../public_components/Footer";
 
 export default function MoviePage(props){
     const {movieId} = useParams()
     const [days,setDays] = useState([])
+
+
+    const {url} = props.data
+    const {movie} = props.data
+
     useEffect(()    => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieId}/showtimes`)
         promise.then((response) => {
@@ -22,8 +28,9 @@ export default function MoviePage(props){
             <Header />
             <span>Selecione o horário</span>
             <div className="sessions">
-                {days.map(e => <MovieSession  id={e.id} weekday={e.weekday} date={e.date} showtimes={e.showtimes} setSession={props.setSession}/>)}
+                {days.map(e => <MovieSession  id={e.id} weekday={e.weekday} date={e.date} showtimes={e.showtimes} setSession={props.setSession} setUrl={props.setUrl}/>)}
             </div>
+            <Footer url={url} movie={movie} />
         </Container>
     )
 }

@@ -26,7 +26,7 @@ export default function Home(props){
                 <span>Selecione o filme</span>
             </Link>
             <main>
-                {movies.map(e => <Movie key={e.id} id={e.id} url={e.posterURL} title={e.title} setMovie={props.setMovie}/>)}
+                {movies.map(e => <Movie key={e.id} id={e.id} url={e.posterURL} title={e.title} setMovie={props.setMovie} setUrl={props.setUrl}/>)}
             </main>
         </div>
     )

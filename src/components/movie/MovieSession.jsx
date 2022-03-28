@@ -9,7 +9,10 @@ export default function MovieSession(props){
                 {list.map(e =>{
                     return (
                         <Link to={`/assentos/${e.id}`}>
-                            <button onClick={() =>{props.setSession({date:props.date,weekday:props.weekday})}}>{e.name}</button>
+                            <button onClick={() =>{
+                                props.setSession({date:props.date,weekday:props.weekday})
+    
+                            }}>{e.name}</button>
                         </Link>
                     )
                 })}
