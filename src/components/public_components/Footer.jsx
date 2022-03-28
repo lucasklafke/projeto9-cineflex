@@ -26,7 +26,7 @@ export default function Footer(props){
 
 const FooterContainer = styledComponents.div`
     display:flex;
-    width: 375px;
+    width: 100%;
     height: 117px;
     left: 0px;
     bottom: 0;
